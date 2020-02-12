@@ -11,9 +11,8 @@ pipeline {
             steps{
                 sh '''
                     pwd
-                    export PATH=$GOBIN:$PATH
-                    go version  
-                    go build
+                    docker build -t builder .
+                    docker images
                 ''' 
             }
         }
