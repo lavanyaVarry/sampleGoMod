@@ -1,5 +1,5 @@
 pipeline {
-    agent {slave1}
+    agent { label 'linux_slave' }
     
     environment {
         GOROOT= "/usr/local/go-1.13/go"
