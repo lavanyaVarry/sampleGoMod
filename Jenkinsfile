@@ -7,13 +7,15 @@ pipeline {
     }
     
     stages {
-        stage {
-           sh '''
-            pwd
-            export PATH=$GOBIN:$PATH
-            go version  
-            go build
-           ''' 
+        stage ('compile') {
+            steps{
+                sh '''
+                    pwd
+                    export PATH=$GOBIN:$PATH
+                    go version  
+                    go build
+                ''' 
+            }
         }
     }
 }
