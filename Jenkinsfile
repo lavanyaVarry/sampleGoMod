@@ -11,8 +11,8 @@ pipeline {
             steps{
                 sh '''
                     pwd
-                    docker build -t builder .
-                    docker images
+                    sudo docker build -t builder .
+                    sudo docker images
                 ''' 
             }
         }
