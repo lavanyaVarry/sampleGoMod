@@ -1,9 +1,18 @@
-FROM golang:latest as builder
+FROM docker.io/golang:latest as builder
 
 # Set the Current Working Directory inside the container
-WORKDIR /
+RUN mkdir /build
 
-COPY . ./
+ADD . /build/
 
-RUN go build && ls -l
+WORKDIR /build
 
+RUN go build -o main .
+
+FROM dockerhub.cisco.com/nextgen-cpo-docker-dev/aobase:1.0-hardened-alpine3.10.3
+
+COPY --from=builder /build/main /app/
+
+WORKDIR /app
+
+CMD ["./main"]
