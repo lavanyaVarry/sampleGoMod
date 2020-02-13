@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     pwd
                     sudo docker build -t builder .
-                    sudo docker images
+                    sudo docker run builder
                 ''' 
             }
         }
